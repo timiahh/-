@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '第六组各价位电脑销量';
+
+option = {
+    title: {
+        x: 'center',
+        text: '各价位电脑销量',
+        subtext: '数据来自淘宝(www.taobao.com)'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            crossStyle: {
+                color: '#999'
+            }
+        }
+    },
+    toolbox: {
+        feature: {
+            dataView: {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            mytool:{
+                show:true,
+                title:'饼状图',
+                icon:'image://http://echarts.baidu.com/images/favicon.png',
+                onclick : function (){
+                        window.location.href='饼图.html';
+
+                }
+            },
+            restore: {show: true},
+            saveAsImage: {show: true}
+
+        }
+    },
+        grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: [
+        {
+            type: 'category',
+            data:['1000以下(电脑配件)(元)', '1000-3000(元)', '3000-5000(元)', '5000-8000(元)', '8000以上(元)'],
+            axisPointer: {
+            type: 'shadow'
+            },
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value',
+            name: '销量',
+            
+        },
+        {
+            type: 'value',
+            name: '价位',
+        }
+    ],
+    series: [
+        {
+            name:'销量',
+            type:'bar',
+            barWidth: '10%',
+            data: [17017061,1167188,265510,137962,34528]},
+
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
